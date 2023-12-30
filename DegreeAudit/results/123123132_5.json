@@ -1,0 +1,366 @@
+{
+  "student_info": {
+    "student_id": "123123132",
+    "student_name": "123123123",
+    "student_surname": "123123123",
+    "student_study_year": "1",
+    "adviser_name": "admin",
+    "major": "1"
+  },
+  "subjects": {
+    "1": {
+      "1": {
+        "course_code": "ANT",
+        "course_level": "101",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "2": {
+        "course_code": "ANT",
+        "course_level": "140",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "2": {
+      "3": {
+        "course_code": "SOC",
+        "course_level": "210",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "4": {
+        "course_code": "ANT-2-4-5",
+        "course_level": "214",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "3": {
+      "5": {
+        "course_code": "ANT-3-5-7",
+        "course_level": "306",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "4": {
+      "6": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "7": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "8": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "9": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "5": {
+      "10": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "6": {
+      "11": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "12": {
+        "course_code": "ANT",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "7": {
+      "13": {
+        "course_code": "HST",
+        "course_level": "100",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "8": {
+      "14": {
+        "course_code": "KAZ",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "15": {
+        "course_code": "KAZ",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "9": {
+      "16": {
+        "course_code": "PHIL",
+        "course_level": "210",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "10": {
+      "17": {
+        "course_code": "WCS",
+        "course_level": "150",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "18": {
+        "course_code": "WCS",
+        "course_level": "210",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "11": {
+      "19": {
+        "course_code": "HST-11-19-22",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "20": {
+        "course_code": "HST-11-20-26",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "21": {
+        "course_code": "HST-11-21-30",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "22": {
+        "course_code": "HST-11-22-34",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "12": {
+      "23": {
+        "course_code": "ECON-12-23-38",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "24": {
+        "course_code": "ECON-12-24-41",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "25": {
+        "course_code": "ECON-12-25-44",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "13": {
+      "26": {
+        "course_code": "CSCI",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "14": {
+      "27": {
+        "course_code": "MATH",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "15": {
+      "28": {
+        "course_code": "BIOL-15-28-49",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "16": {
+      "29": {
+        "course_code": "BUS",
+        "course_level": "100",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    },
+    "17": {
+      "0": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "1": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "2": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "3": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "4": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "5": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "6": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "7": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "8": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "9": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      },
+      "10": {
+        "course_code": "",
+        "course_level": "",
+        "course_name": "",
+        "course_credit": "0",
+        "course_grade": "none",
+        "passed": "Unknown"
+      }
+    }
+  }
+}

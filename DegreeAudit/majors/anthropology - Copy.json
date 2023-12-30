@@ -1,0 +1,606 @@
+{
+  "elementary_courses": {
+    "description": "ANT 101\nChoice of: ANT 140, ANT 160, ANT 175",
+    "need_credits": 12,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "ANT",
+            "levels": [101]
+          }
+        ]
+      },
+      {
+        "passing_grade": "C",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "ANT",
+            "levels": [140, 160, 175]
+          }
+        ]
+      }
+    ]
+  },
+  "method_courses": {
+    "description": "SOC 201\nChoice of: ANT 214/SOC 214,  ANT 240 ",
+    "need_credits": 12,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "SOC",
+            "levels": [210]
+          }
+        ]
+      },
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "ANT",
+            "levels": [214, 240]
+          },
+          {
+            "fixed": true,
+            "name": "SOC",
+            "levels": [214]
+          }
+        ]
+      }
+    ]
+  },
+  "theory_courses": {
+    "description": "Choice of: ANT 306, ANT 385, ANT 340, SOC 301 ",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "ANT",
+            "levels": [306, 385, 340]
+          },
+          {
+            "fixed": true,
+            "name": "SOC",
+            "levels": [301]
+          }
+        ]
+      }
+    ]
+  },
+  "intermediate/advanced_elective": {
+    "description": "\"Any four ANT electives at 200-level or above, where at least two are at the 300-level and one course is in a different sub- field number range (i.e., X00-X29, X30-X49, X50-X74, X75-X99)\"",
+    "need_credits": 24,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "anthropology_elective": {
+    "description": "One ANT elective",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "senior_capstone_or_two_400_level_electives": {
+    "description": "Choice of: ANT 498/499 or any two 400-level electives (e.g. ANT 410, 420, 421, etc.)",
+    "need_credits": 12,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "history_of_kazakhstan": {
+    "description": "HST 100",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "HST",
+            "levels": [100]
+          }
+        ]
+      }
+    ]
+  },
+  "kazakh": {
+    "description": "Kaz",
+    "need_credits": 12,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "KAZ",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "KAZ",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "ethics": {
+    "description": "Choice of: PHIL 210, PHIL 211 or PHIL 212",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "PHIL",
+            "levels": [210, 211, 212]
+          }
+        ]
+      }
+    ]
+  },
+  "writing_and_communication": {
+    "description": "WCS 150\nWCS 200-level core course (choice of 200/210/220/230/240/250/260)",
+    "need_credits": 12,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "C-",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "WCS",
+            "levels": [150]
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "WCS",
+            "levels": [200, 210, 220, 230, 240, 250, 260]
+          }
+        ]
+      }
+    ]
+  },
+  "other_humanities": {
+    "description": "Any HST, PHIL, REL, WLL or courses from the list",
+    "need_credits": 24,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "HST",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PHIL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "REL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "WLL",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "HST",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PHIL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "REL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "WLL",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "HST",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PHIL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "REL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "WLL",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "HST",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PHIL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "REL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "WLL",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "other_social_science": {
+    "description": "Any  ECON, PLS, SOC or courses from the list",
+    "need_credits": 18,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ECON",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PLS",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ECON",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PLS",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ECON",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PLS",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "computer_science": {
+    "description": "CSCI",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "CSCI",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "math": {
+    "description": "Math",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "MATH",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "natural_science": {
+    "description": "Any BIOL, CHEM, PHYS, GEOL",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "BIOL",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "CHEM",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "PHYS",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "GEOl",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  },
+  "business": {
+    "description": "BUS 101",
+    "need_credits": 6,
+    "is_elective": false,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": true,
+            "name": "BUS",
+            "levels": [100]
+          }
+        ]
+      }
+    ]
+  },
+  "electives": {
+    "description": "Any courses from SSH, SEDS, SMG or SOM",
+    "need_credits": 66,
+    "is_elective": true,
+    "courses": [
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "CSCI",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "CSCI",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "CSCI",
+            "levels": []
+          }
+        ]
+      },
+      {
+        "passing_grade": "D",
+        "choices": [
+          {
+            "fixed": false,
+            "name": "ANT",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "SOC",
+            "levels": []
+          },
+          {
+            "fixed": false,
+            "name": "CSCI",
+            "levels": []
+          }
+        ]
+      }
+    ]
+  }
+}

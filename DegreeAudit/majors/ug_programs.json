@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "name": "Biological Science",
+    "year": 4
+  },
+  {
+    "id": 2,
+    "name": "Mathematics",
+    "year": 4
+  },
+  {
+    "id": 3,
+    "name": "Chemistry",
+    "year": 4
+  },
+  {
+    "id": 4,
+    "name": "Physics",
+    "year": 4
+  },
+  {
+    "id": 5,
+    "name": "Anthropology",
+    "year": 4,
+    "file_name": "anthropology.json"
+  },
+  {
+    "id": 6,
+    "name": "History",
+    "year": 4
+  },
+  {
+    "id": 7,
+    "name": "World languages, Literatures and Cultures",
+    "year": 4
+  },
+  {
+    "id": 8,
+    "name": "Political Science and International Relations",
+    "year": 4
+  },
+  {
+    "id": 9,
+    "name": "Chemical and Material Engineering",
+    "year": 4
+  },
+  {
+    "id": 10,
+    "name": "Civil and Environmental Engineering",
+    "year": 4
+  },
+  {
+    "id": 11,
+    "name": "Electrical and Computer Engineering",
+    "year": 4
+  },
+  {
+    "id": 12,
+    "name": "Mechanical and Aerospace Engineering",
+    "year": 4
+  },
+  {
+    "id": 13,
+    "name": "Computer Science",
+    "year": 4
+  },
+  {
+    "id": 14,
+    "name": "Robotics and Mechatronics",
+    "year": 4
+  },
+  {
+    "id": 15,
+    "name": "Petroleum Engineering",
+    "year": 4
+  },
+  {
+    "id": 16,
+    "name": "Mining Engineering",
+    "year": 4
+  },
+  {
+    "id": 17,
+    "name": "Geology",
+    "year": 4
+  },
+  {
+    "id": 18,
+    "name": "Medical Science",
+    "year": 4
+  },
+  {
+    "id": 19,
+    "name": "Bachelor of Science in Nursing Program (BSN)",
+    "year": 4
+  },
+  {
+    "id": 20,
+    "name": "Bachelor in Nursing",
+    "year": 2
+  }
+]

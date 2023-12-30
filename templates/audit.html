@@ -1,0 +1,445 @@
+{% extends 'base.html' %}
+{% load filters %}
+{% load static %}
+
+{% block title %}
+	AAO Degree Audit
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script type="text/javascript">
+        const data = {
+            "A": 4.0,
+            "A-": 3.67,
+            "B+": 3.33,
+            "B": 3.0,
+            "B-": 2.67,
+            "C+": 2.33,
+            "C": 2.0,
+            "C-": 1.67,
+            "D+": 1.33,
+            "D": 1.0,
+            "F": 0.0
+        };
+
+        function resetSelectElem(labelObj){
+            let splitId = labelObj.id.split('-');
+            let selectElem = document.getElementById(`${splitId[0]}-${splitId[1]}-course_code`);
+            let inputElem = document.getElementById(`${splitId[0]}-${splitId[1]}-course_code_text`);
+
+            selectElem.removeAttribute('hidden');
+            selectElem.removeAttribute('disabled');
+            labelObj.setAttribute('hidden', '');
+            labelObj.setAttribute('disabled', '');
+            inputElem.setAttribute('hidden', '');
+            inputElem.setAttribute('disabled', '');
+        }
+
+        function changeCourseLevel(selectObj){
+            let splitted = selectObj.value.split('-');
+            if(splitted[0] === "Other"){
+                let labelElem = document.getElementById(`${splitted[1]}-${splitted[2]}-course_code_reset`);
+                let inputElem = document.getElementById(`${splitted[1]}-${splitted[2]}-course_code_text`);
+
+                selectObj.setAttribute('hidden', '');
+                selectObj.setAttribute('disabled', '');
+                labelElem.removeAttribute('hidden');
+                labelElem.removeAttribute('disabled');
+                inputElem.removeAttribute('hidden');
+                inputElem.removeAttribute('disabled');
+                return;
+            }
+            let selectedId = `levels-${splitted[1]}-${splitted[2]}-${splitted[3]}`;
+            let elemSelected = document.getElementById(selectedId);
+            elemSelected.removeAttribute('hidden');
+            elemSelected.removeAttribute('disabled');
+            elemSelected.children[0].removeAttribute('hidden')
+            elemSelected.children[0].removeAttribute('disabled')
+
+            let options = selectObj.options;
+            for(let i = 0; i < options.length; i++){
+                let optionSplit = options[i].value.split('-');
+                if(optionSplit[1] === splitted[1] && optionSplit[2] === splitted[2] && optionSplit[3] === splitted[3]){
+                    continue;
+                }
+                let selectedId = `levels-${optionSplit[1]}-${optionSplit[2]}-${optionSplit[3]}`;
+                let elem = document.getElementById(selectedId);
+                elem.setAttribute("hidden", "");
+                elem.setAttribute("disabled", "");
+                elem.children[0].setAttribute("hidden", "");
+                elem.children[0].setAttribute("disabled", "");
+            }
+        }
+
+        function changeCourseLevelInput(inputObj){
+            let idSplit = inputObj.id.split('-');
+            let selectInput = document.getElementById(`${idSplit[0]}-${idSplit[1]}-course_grade`);
+            changeGrade(selectInput);
+        }
+
+        function changeGrade(selectObj){
+            let idSplit = selectObj.id.split('-');
+            let grade = selectObj.value;
+            let pElem = document.getElementById(`${idSplit[0]}-${idSplit[1]}-passed`);
+
+            if(grade !== 'none'){
+                let v_grade = data[grade];
+                let v_pass = data[selectObj.getAttribute('pass_grade')];
+
+                let kazElem = document.getElementById(`${idSplit[0]}-${idSplit[1]}-course_code`);
+                let inputElem = document.getElementById(`${idSplit[0]}-${idSplit[1]}-course_level`);
+                if(kazElem != null && inputElem != null) {
+                    if (kazElem.value.toLowerCase().trim() === "kaz" &&
+                        (inputElem.value.trim() === "201" || inputElem.value.trim() === "202")) {
+                        v_pass = data['C-'];
+                    }
+                }
+
+                if(v_grade >= v_pass){
+                    pElem.value = "Pass";
+                }
+                else if(v_grade === 0.0){
+                    pElem.value = "Fail";
+                }
+                else{
+                    pElem.value = "Not pass";
+                }
+            }
+            else{
+                pElem.value = "Unknown";
+            }
+
+            let creditElem = document.getElementById(`${idSplit[0]}-${idSplit[1]}-course_credit`);
+            changeCredit(creditElem);
+        }
+
+        function changeCredit(selectObj){
+            let idSplit = selectObj.id.split('-');
+            let creditsTd = document.getElementById(`${idSplit[0]}-credits_td`);
+            let spanElem = document.getElementById(`${idSplit[0]}-credits`);
+            let need_credits = parseInt(spanElem.getAttribute('credits'));
+            let totalElem = document.getElementById('total_credits');
+
+            let currentCredits = 0;
+            for(let childNode of creditsTd.children){
+                let childIdSplit = childNode.id.split('-');
+                let passElem = document.getElementById(`${childIdSplit[0]}-${childIdSplit[1]}-passed`);
+                if(passElem.value === "Pass") {
+                    currentCredits += parseInt(childNode.value);
+                }
+            }
+
+            if (need_credits < currentCredits) {
+                spanElem.value = 0;
+                spanElem.setAttribute("extra_credits", (currentCredits - need_credits).toString());
+            } else {
+                spanElem.value = need_credits - currentCredits;
+                spanElem.setAttribute("extra_credits", "0");
+            }
+
+            let total = 0;
+            let selectElems = document.getElementsByClassName('is_credit');
+            for (let elem of selectElems) {
+                let childIdSplit = elem.id.split('-');
+                let passElem = document.getElementById(`${childIdSplit[0]}-${childIdSplit[1]}-passed`);
+                if(passElem.value === "Pass") {
+                    total += parseInt(elem.value);
+                }
+            }
+            totalElem.innerText = String(total);
+
+            if(spanElem.hasAttribute("elective")){
+                return;
+            }
+
+            let creditShows = document.getElementsByClassName("credit-show");
+            let totalExtraCredits = 0;
+            for(let elem of creditShows){
+                if(elem.hasAttribute("elective")){
+                    continue;
+                }
+                totalExtraCredits += parseInt(elem.getAttribute("extra_credits"));
+            }
+
+            let electiveSpan = document.getElementsByClassName("elective")[0];
+            let originalCredits = parseInt(electiveSpan.getAttribute("original_credits"));
+            let electiveCurrentCredits = parseInt(electiveSpan.getAttribute("credits")) - parseInt(electiveSpan.value);
+            electiveSpan.setAttribute("credits", (originalCredits - totalExtraCredits).toString());
+            let setCredit = parseInt(electiveSpan.getAttribute("original_credits")) - (electiveCurrentCredits + totalExtraCredits);
+            if(setCredit > 0) {
+                electiveSpan.value = setCredit;
+            }
+            else{
+                electiveSpan.value = 0;
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+        <a href="https://aao.nu.edu.kz/" target="_blank">
+            {{ logo|safe }}
+        </a>
+        {{ back|safe }}
+        <form action="/save_form/{{ id_ }}" method="POST" id="course_form">
+            <div id="main_content">
+                {% csrf_token %}
+                <label for="studentId" class="form-label">Student ID</label>
+                <input type="text" class="form-control" id="studentId" name="studentId" required>
+                <label for="studentName" class="form-label">Student Name</label>
+                <input type="text" class="form-control" id="studentName" name="studentName" required>
+                <label for="studentSurname" class="form-label">Student Surname</label>
+                <input type="text" class="form-control" id="studentSurname" name="studentSurname" required>
+                <label for="studentStudyYear" class="form-label">Study Year</label>
+                <select id="studentStudyYear" name="studentStudyYear" class="form-select" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <label for="adviserId" class="form-label">Adviser</label>
+                <select name="adviserId" id="adviserId" class="form-select">
+                    {% for advisor in advisors %}
+                        <option value="{{ advisor.username }}">{{ advisor.first_name }} {{ advisor.last_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="major" class="form-label">Major</label>
+                <select id="major" name="major" class="form-select" required>
+                    {% for ug_program in ug_programs %}
+                        <option value="{{ ug_program.id }}">{{ ug_program.name }}</option>
+                    {% endfor %}
+                </select>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col-4">Section</th>
+                                <th scope="col" class="col">Course Code</th>
+                                <th scope="col" class="col">Course Level</th>
+                                <th scope="col" class="col">Course Name</th>
+                                <th scope="col" class="col">Credits</th>
+                                <th scope="col" class="col">Grade</th>
+                                <th scope="col" class="col-1">Is Passed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for section in major.section_set|get_all %}
+                                <tr>
+                                    <th scope="row">
+                                        <h6>{{ section.name }}</h6>
+                                        <br>
+                                        {{ section.description }}
+                                        <br>
+                                        Need credits:
+                                        {% if section.is_elective %}
+                                        	<input type="text" id="{{ section.id }}-credits" credits="{{ section.credits }}" readonly value="{{ section.credits }}"
+                                            class="form-control credit-show elective" name="{{ section.id }}-credits" extra_credits="0" elective
+                                            original_credits="{{ section.credits }}">
+                                        {% else %}
+                                            <input type="text" id="{{ section.id }}-credits" credits="{{ section.credits }}" readonly value="{{ section.credits }}"
+                                            class="form-control credit-show" name="{{ section.id }}-credits" extra_credits="0">
+                                        {% endif %}
+                                        <br>
+                                        {% if section.image %}
+                                        	<a href="/{{ section.image }}" target="_blank">Photo</a>
+                                        {% endif %}
+                                        {% if section.link %}
+                                        	<a href="{{ section.link }}" target="_blank">Link</a>
+                                        {% endif %}
+                                    </th>
+                                    <td>
+                                        {% if not section.is_elective %}
+                                            {% for course in section.course_set|get_all %}
+                                            {% with course.subjectchoice_set|get_all as subject_choices %}
+                                            {% if subject_choices|get_len > 1 %}
+                                            <div class="input-group">
+                                                <label for="{{ section.id }}-{{ course.id }}-course_code" class="btn"
+                                                id="{{ section.id }}-{{ course.id }}-course_code_reset" hidden disabled
+                                                onclick="resetSelectElem(this)">
+                                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                                </label>
+                                                <select class="form-select" name="{{ section.id }}-{{ course.id }}-course_code"
+                                                id="{{ section.id }}-{{ course.id }}-course_code" onchange="changeCourseLevel(this)">
+                                                    {% for subject_choice in subject_choices %}
+                                                        <option value="{{ subject_choice.subject_code.name }}-{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}">
+                                                            {{ subject_choice.subject_code.name }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                                <input type="text" class="form-control" name="{{ section.id }}-{{ course.id }}-course_code"
+                                                id="{{ section.id }}-{{ course.id }}-course_code_text" hidden disabled>
+                                            </div>
+                                            {% else %}
+                                                {% with subject_choices|get_elem:0 as subject_choice %}
+                                                    {% if subject_choice %}
+                                                    <input type="text" class="form-control" value="{{ subject_choice.subject_code.name }}" readonly
+                                                    name="{{ section.id }}-{{ course.id }}-course_code"
+                                                    id="{{ section.id }}-{{ course.id }}-course_code">
+                                                    {% endif %}
+                                                {% endwith %}
+                                            {% endif %}
+                                            {% endwith %}
+                                        {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <input type="text" class="form-control" name="{{ section.id }}-{{ i }}-course_code">
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td id="course_level_section-{{ section.id }}">
+                                        {% if not section.is_elective %}
+                                            {% for course in section.course_set|get_all %}
+                                            {% with 0 as i %}
+                                            {% for subject_choice in course.subjectchoice_set|get_all %}
+                                                {% if i == 0 %}
+                                                    <div id="levels-{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}">
+                                                        {% if subject_choice.fixed %}
+                                                            {% if subject_choice.levels|get_all|get_len == 1 %}
+                                                                <input type="number" class="form-control" value="{{ subject_choice.levels|get_all|get_elem:0 }}" readonly
+                                                                name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level">
+                                                            {% else %}
+                                                                <select class="form-select" name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level">
+                                                                    {% for level in subject_choice.levels|get_all %}
+                                                                        <option value="{{ level.level }}">{{ level.level }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <input type="number" class="form-control" min="0"
+                                                            name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level"
+                                                            id="{{ section.id }}-{{ course.id }}-course_level"
+                                                            onchange="changeCourseLevelInput(this)">
+                                                        {% endif %}
+                                                    </div>
+                                                {% else %}
+                                                    <div id="levels-{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}" hidden disabled>
+                                                        {% if subject_choice.fixed %}
+                                                            {% if subject_choice.levels|get_all|get_len == 1 %}
+                                                                <input type="number" class="form-control" value="{{ subject_choice.levels|get_all|get_elem:0 }}" readonly
+                                                                name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level" hidden disabled>
+                                                            {% else %}
+                                                                <select class="form-select"
+                                                                        name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level"
+                                                                        hidden disabled>
+                                                                    {% for level in subject_choice.levels|get_all %}
+                                                                        <option value="{{ level.level }}">{{ level.level }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <input type="number" class="form-control" min="0"
+                                                                   name="{{ section.id }}-{{ course.id }}-{{ subject_choice.id }}-course_level"
+                                                                    hidden disabled>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                                {% increment i as i %}
+                                            {% endfor %}
+                                            {% endwith %}
+                                        {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <input type="number" class="form-control"
+                                                name="{{ section.id }}-{{ i }}-course_level" min="0">
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if not section.is_elective %}
+                                            {% for course in section.course_set|get_all %}
+                                                <input type="text" class="form-control" name="{{ section.id }}-{{ course.id }}-course_name">
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <input type="text" class="form-control" name="{{ section.id }}-{{ i }}-course_name">
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td id="{{ section.id }}-credits_td">
+                                        {% if not section.is_elective %}
+                                            {% for course in section.course_set|get_all %}
+                                            <select class="form-select is_credit" name="{{ section.id }}-{{ course.id }}-course_credit"
+                                            id="{{ section.id }}-{{ course.id }}-course_credit"
+                                            onchange="changeCredit(this)">
+                                                <option value="0">-</option>
+                                                <option value="2">2</option>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                        {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <select class="form-select is_credit" name="{{ section.id }}-{{ i }}-course_credit"
+                                                id="{{ section.id }}-{{ i }}-course_credit"
+                                                onchange="changeCredit(this)">
+                                                <option value="0">-</option>
+                                                <option value="2">2</option>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if not section.is_elective %}
+                                            {% for course in section.course_set|get_all %}
+                                            <select class="form-select" name="{{ section.id }}-{{ course.id }}-course_grade"
+                                            id="{{ section.id }}-{{ course.id }}-course_grade"
+                                            pass_grade="{{ course.passing_grade.letter }}"
+                                            onchange="changeGrade(this)">
+                                                <option value="none">-</option>
+                                                {% for grade in grades %}
+                                                    <option value="{{ grade.letter }}">{{ grade.letter }}</option>
+                                                {% endfor %}
+                                                </select>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <select class="form-select" name="{{ section.id }}-{{ i }}-course_grade"
+                                                id="{{ section.id }}-{{ i }}-course_grade"
+                                                pass_grade="D"
+                                                onchange="changeGrade(this)">
+                                                <option value="none">-</option>
+                                                {% for grade in grades %}
+                                                    <option value="{{ grade.letter }}">{{ grade.letter }}</option>
+                                                {% endfor %}
+                                                </select>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if not section.is_elective %}
+                                        {% for course in section.course_set|get_all %}
+                                            <input id="{{ section.id }}-{{ course.id }}-passed" class="form-control"
+                                                name="{{ section.id }}-{{ course.id }}-passed" value="Unknown" readonly/>
+                                        {% endfor %}
+                                        {% else %}
+                                            {% for i in section.credits|get_elective_len|int_range %}
+                                                <input id="{{ section.id }}-{{ i }}-passed" class="form-control"
+                                                name="{{ section.id }}-{{ i }}-passed" value="Unknown" readonly/>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>
+                                    <b>Total Credits</b>
+                                </td>
+                                <td>
+                                    <b id="total_credits">0</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Send to Advisor</button>
+        </form>
+    </div>
+    <br>
+{% endblock %}
